@@ -77,3 +77,6 @@ npm run build
 ### 6️⃣ Start Backend (Serving Frontend Build + APIs)
 ```bash
 npm run start
+```
+
+

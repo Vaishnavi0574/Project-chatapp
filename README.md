@@ -77,17 +77,3 @@ npm run build
 ### 6️⃣ Start Backend (Serving Frontend Build + APIs)
 ```bash
 npm run start
-```
-
-### ⚙️ Environment Variables 
-```bash
-PORT=3000
-MONGO_URI=mongodb+srv://vaishnavisingh0574:MI5ykYiDFqgPdPJK@cluster0.nbyygb8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-JWT_SECRET=dfgdfgDFGSDfzsdcsGFd
-
-CLOUDINARY_CLOUD_NAME=dmmsbz5f7
-CLOUDINARY_API_SECRET=aeR18R-PhHLaQB1w6VuE62nFw30
-CLOUDINARY_API_KEY=458798682917366
-
-NODE_ENV=production
-```

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import {io } from "socket.io-client"
 
 const BASE_URL = import.meta.env.MODE === "development"
-  ? "http://localhost:3000/api"
+  ? "http://localhost:3000"
   :"/"
 export const useAuthStore = create((set,get) => ({
     authUser: null,
@@ -30,20 +30,39 @@ export const useAuthStore = create((set,get) => ({
     }
   },
 
-  signup: async(formData) => {
-        try {
-            set({ isSigningUp: true }); 
-            const res = await axiosInstance.post('/auth/signup', formData);
-            set({ authUser: res.data.user });
-            toast.success("Signup successful");
-            get().connectSocket();
-        } catch (error) {
-            console.log(error.response?.data?.message);
-            toast.error(error.response?.data?.message || "Signup failed");
-        } finally {
-            set({ isSigningUp: false });   
-        }
-    },
+  signup: async (formData) => {
+  try {
+    set({
+      isSigningUp: true,
+    });
+
+    const res = await axiosInstance.post(
+      "/auth/signup",
+      formData
+    );
+
+    set({
+      authUser: res.data.user,
+    });
+
+    toast.success("Signup successful");
+
+    setTimeout(() => {
+      get().connectSocket();
+    }, 100);
+
+  } catch (error) {
+    console.log(error);
+
+    toast.error(
+      error.response?.data?.message || "Signup failed"
+    );
+  } finally {
+    set({
+      isSigningUp: false,
+    });
+  }
+},
 
     logout:async()=>{
       try {
